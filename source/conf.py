@@ -51,7 +51,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'DGETS Maintenance Documentation'
+project = 'DGETS Maintenance'
 copyright = '2016, Tom Ratcliff'
 author = 'Tom Ratcliff'
 
@@ -177,7 +177,7 @@ html_static_path = ['_static']
 
 # Custom sidebar templates, maps document names to template names.
 #
-# html_sidebars = {}
+html_sidebars = {'**' :['globaltoc.html', 'searchbox.html'],}
 
 # Additional templates that should be rendered to pages, maps page names to
 # template names.
