@@ -97,13 +97,17 @@ Web Tiles
    
    Web tile processing is handled by GDAL. This processing handles 50 tiles at
    a time (and can get backed up depending on mission load)
-   processing is handled by /opt/GRamp/apache2/htdocs/img_svr/scripts/libGOOGLE_OV.sh
 
    Tiles created by gdal are PNGs that are overlayed onto Google Earth. These
    are currently set to overlay the IRC.ntf for each scene
 
+   Processing handled by S98P3I_PROC which calls:
+     /opt/GRamp/apache2/htdocs/img_svr/scripts/Main.sh
+      /opt/GRamp/apache2/htdocs/img_svr/scripts/TILE_NITF.sh (GE_OVERLAY function)
+       /opt/GRamp/apache2/htdocs/img_svr/scripts/libGOOGLE_OV.sh (GE_OVERLAY function)
 
-Web Tile Directories
+
+GE Tile Directories
 ++++++++++++++++++++
     
     - Input dir:
@@ -122,5 +126,78 @@ Web Tile Directories
     
       + /raid/DGETS_DATA/MISSIONS/MISSIONID/SCENE.dir/GE_FILES
 
+.. information::
+
+   what is HIGH.png and LOW.png?
+   what is 14,15,16,17,18 in /raid/DGETS_DATA/MISSIONS/MISSIONID/SCENE.dir/GE_FILES
+
 Target Query 
 ---------------
+
+.. note::
+   
+   Target Query tiles are produced by GDAL. This processing handles 50 tiles at
+   a time (and can get backed up depending on mission load)
+
+   Tiles created by gdal are JPGs that are used in the Target Query web gui. There are folders
+   for each level of zoom and an overview jpg used for thumbnail previews
+
+   Processing handled by S98P3I_PROC which calls:
+     /opt/GRamp/apache2/htdocs/img_svr/scripts/Main.sh
+      /opt/GRamp/apache2/htdocs/img_svr/scripts/WEB_TILE.sh (web_view function)
+       /opt/GRamp/apache2/htdocs/img_svr/scripts/tilemaker.py
+
+
+Web Tile Directories
+++++++++++++++++++++
+    
+    - Input dir:
+
+      + /raid/DGETS_DATA/INPUT
+   
+    - Processing dir:
+
+      + /raid/DGETS_DATA/PROCESSING
+
+    - Output dir: ???
+
+      + /raid/DGETS_DATA/DONE
+
+    - JPG dir:
+    
+      + /raid/DGETS_DATA/MISSIONS/MISSIONID/SCENE.dir/VIEWER_FILES/tile-%d-%d-%d-%d.jpg
+
+.. information::
+
+   what is /raid/DGETS_DATA/MISSIONS/MISSIONID/SCENE.dir/OV.jpg?
+
+
+JPEG2000
+--------
+
+.. note::
+   
+   Processing handled by S98P3I_PROC which calls:
+     /opt/GRamp/apache2/htdocs/img_svr/scripts/Main.sh
+      /opt/GRamp/apache2/htdocs/img_svr/scripts/TILE_NITF.sh
+       /opt/GRamp/apache2/htdocs/img_svr/scripts/libGOOGLE_OV.sh
+
+.. note::
+
+   JPIP server handled in S99SYERS
+    /usr/local/bin/kdu_server_start.csh       
+
+JP2 Directories
+++++++++++++++++++++
+    
+    - Input dir:
+
+      + /raid/DGETS_DATA/INPUT
+   
+    - Processing dir:
+
+      + /raid/DGETS_DATA/PROCESSING
+
+    - Output dir:
+
+      + /raid/DGETS_DATA/MISSIONS/MISSIONID/SCENE.dir/scene.jp2
