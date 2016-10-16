@@ -13,15 +13,13 @@ Contents:
 
    overview
    install 
-   config
    dataflow
    mission_plans
    tgt_query
-   dynamic_kml
    ff
-   chat
    training
    gains
+   admin_hud
    troubleshooting
    contacts
    acronyms
