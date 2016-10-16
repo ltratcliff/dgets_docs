@@ -1,8 +1,6 @@
 Overview
 ========
 
-.. contents::
-   :local:
 *General Overview for DGETS SysAds*
 
 The DGETS sysad Guide will assist UTAS personnel on how to install, configure

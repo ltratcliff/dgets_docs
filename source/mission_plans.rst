@@ -4,15 +4,21 @@ Mission Plans
 Data Flow
 ---------
  - Mission Plans comes in via AMQ and are processed by Process_Combined_Collection_Plan.pl:
+
    + from DGS1 -> ECH-DGETS 
+
      - AMQ Topics= $THREAD_DGETS_COMBINED_CSP_PLAN & $THREAD_CSP_SP_FILE
+
    + from DGS2 -> WCH-DGETS 
+
      - AMQ Topics= $THREAD_DGETS_COMBINED_CSP_PLAN & $THREAD_CSP_SP_FILE
 
 .. note::
    Process_Combined_Collection_Plan.pl is combined in the gr-syersFF service.
 
 
+Processes
+---------
 Process_Combined_Collection_Plan listens on AMQ, Parses the COMBINED_CSP_PLAN
 Message for Primary targets, Coords for footprints, With Targets and DPs in Nav.
 Parsed data is inserted into the DGETS MYSQL db.
@@ -25,14 +31,18 @@ Parsed data is inserted into the DGETS MYSQL db.
 
 
 
+Logs
+---------
 Logs for Mission Plan ingest are located:
  - /raid/DGETS_DATA/dgets_logs/Mission_Plans_Ingest.out
   - Log indicates sending DGS, Processed Plan, Changes to Nav & SP
 
+Resets
+---------
 Restart Process_Combined_Collection_Plan.pl via:
 
   ``svcadm restart gr-syersFF``
 
    or via the admin_hud
 
- - Sometimes toggling AMQ on DGETS will help with stubborn mission plans being ingested
+ - Resetting AMQ on DGETS can also help with mission plans being ingested
